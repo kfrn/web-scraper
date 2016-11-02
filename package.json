@@ -18,6 +18,7 @@
   "homepage": "https://github.com/kfrn/web-scraper-js#readme",
   "dependencies": {
     "cheerio": "^0.22.0",
+    "fs": "0.0.1-security",
     "superagent": "^2.3.0"
   }
 }

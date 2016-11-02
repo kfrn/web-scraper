@@ -9,10 +9,9 @@ function getPage (url) {
     .end(function(err, res) {
       if (err) {
         reject(err)
-        console.log("error");
       } else {
-        res = JSON.stringify(res)
-        resolve(res)
+        // res = JSON.stringify(res)
+        resolve(res.text)
       }
     })
   })
