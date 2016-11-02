@@ -1,2 +1,2 @@
-# web-scraper
+# js-web-scraper
 Basic web scraper
