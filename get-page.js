@@ -1,6 +1,6 @@
-// Function to return HTML of page
-
 var request = require('superagent')
+
+module.exports = getPage
 
 function getPage (url) {
   return new Promise (function (resolve, reject) {
@@ -17,13 +17,3 @@ function getPage (url) {
     })
   })
 }
-
-module.exports = getPage
-
-getPage("http://knexjs.org/")
-  .then (function(result) {
-    console.log(result);
-  })
-  .catch (function(error) {
-    console.log(error);
-  })
