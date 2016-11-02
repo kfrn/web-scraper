@@ -7,7 +7,7 @@ function extractURLs(html) {
 
   var URLlist = [];
 
-  URLs = $('a').each(function() {
+  URLs = $('.lister-item-header a').each(function() {
     URLlist.push($(this).attr('href'))
   })
 
