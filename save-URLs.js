@@ -2,8 +2,8 @@ var fs = require('fs')
 
 module.exports = saveURLs
 
-function saveURLs(URLs) {
-  fs.writeFile('URLs.txt', URLs, function(err) {
+function saveURLs(URLs, filename) {
+  fs.writeFile(filename, URLs, function(err) {
     if (err) throw error
     console.log("Saved!");
   })
