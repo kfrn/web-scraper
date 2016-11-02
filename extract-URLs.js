@@ -11,13 +11,11 @@ function extractURLs(html) {
     URLlist.push($(this).attr('href'))
   })
 
-  console.log(URLlist);
   return URLlist
 }
 
 
-// Test
+// Testing
 
-var HTMLstring = "sdfsdafsadf<a href='google.com'</a>sfjklfjsjkl<a href='yahoo.com'></a>"
-
-extractURLs(HTMLstring)
+// var HTMLstring = "sdfsdafsadf<a href='google.com'</a>sfjklfjsjkl<a href='yahoo.com'></a>"
+// extractURLs(HTMLstring)
