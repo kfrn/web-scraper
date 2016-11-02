@@ -5,8 +5,9 @@ var saveURLs = require('./save-URLs')
 getPage("https://kfrn.github.io/")
   .then (function(result) {
     // console.log(result);
-    extractURLs(result)
-    console.log(extractURLs(result));
+    var URLarray = extractURLs(result)
+    console.log("Extracted URLs are:", extractURLs(result));
+    saveURLs(URLarray)
   })
   .catch (function(error) {
     console.log(error);

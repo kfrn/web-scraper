@@ -3,7 +3,7 @@ var fs = require('fs')
 module.exports = saveURLs
 
 function saveURLs(URLs) {
-  fs.writeFile('data.txt', URLs, function(err) {
+  fs.writeFile('data.csv', URLs, function(err) {
     if (err) throw error
     console.log("Saved!");
   })
