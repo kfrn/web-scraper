@@ -1,8 +1,9 @@
 module.exports = extractIMDbID
 
-function extractIMDbID (testData) {
-  var IMDbIDs = testData.map(elem => elem.match(/tt\d+/)[0])
-  console.log(IMDbIDs);
+function extractIMDbID (array) {
+  var IMDbIDs = array.map(elem => elem.match(/tt\d+/))
+  return refineResults = IMDbIDs.map(elem => elem[0])
+  // console.log(refineResults);
 }
 
 
