@@ -14,8 +14,6 @@ function extractURLs(html) {
   return URLlist
 }
 
-
-// Testing
-
+//// Testing
 // var HTMLstring = "sdfsdafsadf<a href='google.com'</a>sfjklfjsjkl<a href='yahoo.com'></a>"
 // extractURLs(HTMLstring)
