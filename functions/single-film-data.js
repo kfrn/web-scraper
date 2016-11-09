@@ -38,6 +38,7 @@ function getFilmData(html) {
     durationNthChild += 2
   }
 
+
   var filmData = {
     director: $('div.credit_summary_item span a span').html(),
     country: $('#titleDetails .txt-block a').html(),
@@ -48,7 +49,8 @@ function getFilmData(html) {
     origTitle: $('#title-overview-widget > div.vital > div.title_block > div > div.titleBar > div.title_wrapper > h1').html().replace(/\&.+/, ""),
     colourBW: $('#titleDetails > div:nth-child(15) > a').html().trim(),
     duration: durationList,
-    releaseDate: $('#titleDetails > div:nth-child(5)').html().replace(/\<h4.{5,}\<\/h4\>/, "").replace(/\<span.{5,}\n.*\n.{5,}/, "").trim()
+    releaseDate: $('#titleDetails > div:nth-child(5)').html().replace(/\<h4.{5,}\<\/h4\>/, "").replace(/\<span.{5,}\n.*\n.{5,}/, "").trim(),
+    language: $('#titleDetails > div:nth-child(4) > a').html()
   }
 
   return filmData
