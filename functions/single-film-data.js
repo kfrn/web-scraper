@@ -28,7 +28,9 @@ function getFilmData(html) {
     genreNthChild +=2
   }
 
-  var altTitle = $('#titleDetails > div:nth-child(6)').html().replace(/\<h4.{5,}\<\/h4\>/, "").replace(/\<span.{5,}\n.*\n.{5,}/, "").trim()
+  var spanRegex = /\<span.{5,}\n.*\n.{5,}/
+
+  var altTitle = $('#titleDetails > div:nth-child(6)').html().replace(/\<h4.{5,}\<\/h4\>/, "").replace(spanRegex, "").trim()
 
   var filmData = {
     director: $('div.credit_summary_item span a span').html(),
@@ -36,9 +38,8 @@ function getFilmData(html) {
     company: $('#titleDetails > div:nth-child(9) > span:nth-child(2) > a > span').html(),
     cast: castList,
     genres: genreList,
-    altTitle: altTitle
-    // origTitle: $('#titleDetails > div:nth-child(6)').html().trim()
-    // synopsis: $('#titleStoryLine div p').html()
+    altTitle: altTitle,
+    origTitle: $('#title-overview-widget > div.vital > div.title_block > div > div.titleBar > div.title_wrapper > h1').html().replace(/\&.+/, "")
   }
 
   return filmData
