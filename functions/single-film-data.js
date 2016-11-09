@@ -59,25 +59,24 @@ function getFilmData(html) {
   }
 
   var filmData = {
-    directors: directorList,
+    directors: directorList, // not always working
     country: $('#titleDetails .txt-block a').html(),
     company: $('#titleDetails > div:nth-child(9) > span:nth-child(2) > a > span').html(),
     cast: castList,
-    writers: writerList,
+    writers: writerList, // not always working
     genres: genreList,
-    altTitle: $('#titleDetails > div:nth-child(6)').html().replace(/\<h4.{5,}\<\/h4\>/, "").replace(/\<span.{5,}\n.*\n.{5,}/, "").trim(),
     origTitle: $('#title-overview-widget > div.vital > div.title_block > div > div.titleBar > div.title_wrapper > h1').html().replace(/\&.+/, ""),
     duration: durationList,
     releaseDate: $('#titleDetails > div:nth-child(5)').html().replace(/\<h4.{5,}\<\/h4\>/, "").replace(/\<span.{5,}\n.*\n.{5,}/, "").trim(),
     language: $('#titleDetails > div:nth-child(4) > a').html(),
-    synopsis: $('#titleStoryLine > div:nth-child(3) > p').html().replace(/\<em.{5,}\n.{5,}/, "").trim()
+    synopsis: $('#titleStoryLine > div:nth-child(3) > p').html().replace(/\<em.{5,}\n.{5,}/, "").trim() // If there is no synopsis, this breaks
   }
 
   return filmData
 }
 
 
-getPage("http://www.imdb.com/title/tt0003489/?ref_=fn_al_tt_7")
+getPage("http://www.imdb.com/title/tt0005951/?ref_=nm_flmg_act_5")
   .then (function(result) {
     var extractedData = getFilmData(result)
     console.log("extractedData is:", extractedData)
