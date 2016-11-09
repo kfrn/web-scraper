@@ -48,18 +48,29 @@ function getFilmData(html) {
     directorNthChild++
   }
 
+  var writerList = []
+  var writerNthChild = 2
+  for (var l = 0; l < 5; l++) {
+    writerCheerio = '#title-overview-widget > div.minPosterWithPlotSummaryHeight > div.plot_summary_wrapper > div.plot_summary.minPlotHeightWithPoster > div:nth-child(2) > span:nth-child(' + writerNthChild + ') > a > span'
+    if ($(writerCheerio).html() !== null) {
+      writerList.push($(writerCheerio).html())
+    }
+    writerNthChild++
+  }
+
   var filmData = {
     directors: directorList,
     country: $('#titleDetails .txt-block a').html(),
     company: $('#titleDetails > div:nth-child(9) > span:nth-child(2) > a > span').html(),
     cast: castList,
+    writers: writerList,
     genres: genreList,
     altTitle: $('#titleDetails > div:nth-child(6)').html().replace(/\<h4.{5,}\<\/h4\>/, "").replace(/\<span.{5,}\n.*\n.{5,}/, "").trim(),
     origTitle: $('#title-overview-widget > div.vital > div.title_block > div > div.titleBar > div.title_wrapper > h1').html().replace(/\&.+/, ""),
-    colourBW: $('#titleDetails > div:nth-child(15) > a').html().trim(),
     duration: durationList,
     releaseDate: $('#titleDetails > div:nth-child(5)').html().replace(/\<h4.{5,}\<\/h4\>/, "").replace(/\<span.{5,}\n.*\n.{5,}/, "").trim(),
-    language: $('#titleDetails > div:nth-child(4) > a').html()
+    language: $('#titleDetails > div:nth-child(4) > a').html(),
+    synopsis: $('#titleStoryLine > div:nth-child(3) > p').html().replace(/\<em.{5,}\n.{5,}/, "").trim()
   }
 
   return filmData
