@@ -12,7 +12,9 @@ function getFilmData(html) {
   var castNthChild = 2
   for (var i = 0; i < 15; i++) {
     castCheerio = '#titleCast > table > tr:nth-child(' + castNthChild + ') > td.itemprop > a > span'
-    castList.push($(castCheerio).html())
+    if ( $(castCheerio).html() !== null ) {
+      castList.push($(castCheerio).html())
+    }
     castNthChild++
   }
 
@@ -26,19 +28,24 @@ function getFilmData(html) {
     genreNthChild +=2
   }
 
+  var altTitle = $('#titleDetails > div:nth-child(6)').html().replace(/\<h4.{5,}\<\/h4\>/, "").replace(/\<span.{5,}\n.*\n.{5,}/, "").trim()
+
   var filmData = {
     director: $('div.credit_summary_item span a span').html(),
     country: $('#titleDetails .txt-block a').html(),
-    // synopsis: $('#titleStoryLine div p').html()
+    company: $('#titleDetails > div:nth-child(9) > span:nth-child(2) > a > span').html(),
     cast: castList,
-    genres: genreList
+    genres: genreList,
+    altTitle: altTitle
+    // origTitle: $('#titleDetails > div:nth-child(6)').html().trim()
+    // synopsis: $('#titleStoryLine div p').html()
   }
 
   return filmData
 }
 
 
-getPage("http://www.imdb.com/title/tt0003740/?ref_=fn_al_tt_1")
+getPage("http://www.imdb.com/title/tt0003489/?ref_=fn_al_tt_7")
   .then (function(result) {
     var extractedData = getFilmData(result)
     console.log("extractedData is:", extractedData)
