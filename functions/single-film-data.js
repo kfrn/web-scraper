@@ -38,9 +38,18 @@ function getFilmData(html) {
     durationNthChild += 2
   }
 
+  var directorList = []
+  var directorNthChild = 2
+  for (var l = 0; l < 5; l++) {
+    directorCheerio = '#title-overview-widget > div.minPosterWithPlotSummaryHeight > div.plot_summary_wrapper > div.plot_summary.minPlotHeightWithPoster > div:nth-child(2) > span:nth-child(' + directorNthChild + ') > a > span'
+    if ($(directorCheerio).html() !== null) {
+      directorList.push($(directorCheerio).html())
+    }
+    directorNthChild++
+  }
 
   var filmData = {
-    director: $('div.credit_summary_item span a span').html(),
+    directors: directorList,
     country: $('#titleDetails .txt-block a').html(),
     company: $('#titleDetails > div:nth-child(9) > span:nth-child(2) > a > span').html(),
     cast: castList,
